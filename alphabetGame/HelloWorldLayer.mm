@@ -58,7 +58,7 @@ enum {
 		[self initPhysics];
 		
 		// create reset button
-		[self createMenu];
+		//[self createMenu];
 		
 		//Set up sprite
 		
@@ -96,55 +96,6 @@ enum {
 	
 	[super dealloc];
 }	
-
--(void) createMenu
-{
-	// Default font size will be 22 points.
-	[CCMenuItemFont setFontSize:22];
-	
-	// Reset Button
-	CCMenuItemLabel *reset = [CCMenuItemFont itemWithString:@"Reset" block:^(id sender){
-		[[CCDirector sharedDirector] replaceScene: [HelloWorldLayer scene]];
-	}];
-	
-	// Achievement Menu Item using blocks
-	CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
-		
-		
-		GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
-		achivementViewController.achievementDelegate = self;
-		
-		AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-		
-		[[app navController] presentModalViewController:achivementViewController animated:YES];
-		
-		[achivementViewController release];
-	}];
-	
-	// Leaderboard Menu Item using blocks
-	CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
-		
-		
-		GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
-		leaderboardViewController.leaderboardDelegate = self;
-		
-		AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-		
-		[[app navController] presentModalViewController:leaderboardViewController animated:YES];
-		
-		[leaderboardViewController release];
-	}];
-	
-	CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, reset, nil];
-	
-	[menu alignItemsVertically];
-	
-	CGSize size = [[CCDirector sharedDirector] winSize];
-	[menu setPosition:ccp( size.width/2, size.height/2)];
-	
-	
-	[self addChild: menu z:-1];	
-}
 
 -(void) initPhysics
 {
@@ -281,20 +232,6 @@ enum {
 		
 		[self addNewSpriteAtPosition: location];
 	}
-}
-
-#pragma mark GameKit delegate
-
--(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
-{
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
-}
-
--(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
-{
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 
 @end
