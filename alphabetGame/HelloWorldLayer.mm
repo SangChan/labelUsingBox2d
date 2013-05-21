@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 
 #import "PhysicsSprite.h"
+#import "PhysicsLabel.h"
 
 enum {
 	kTagParentNode = 1,
@@ -24,6 +25,7 @@ enum {
 @interface HelloWorldLayer()
 -(void) initPhysics;
 -(void) addNewSpriteAtPosition:(CGPoint)p;
+-(void) addNewLabelAtPosition:(CGPoint)p;
 -(void) createMenu;
 @end
 
@@ -74,7 +76,8 @@ enum {
 		[self addChild:parent z:0 tag:kTagParentNode];
 		
 		
-		[self addNewSpriteAtPosition:ccp(s.width/2, s.height/2)];
+		//[self addNewSpriteAtPosition:ccp(s.width/2, s.height/2)];
+        [self addNewLabelAtPosition:ccp(s.width/2, s.height/2)];
 		
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Tap screen" fontName:@"Marker Felt" fontSize:32];
 		[self addChild:label z:0];
@@ -207,6 +210,43 @@ enum {
 	[sprite setPhysicsBody:body];
 }
 
+-(void) addNewLabelAtPosition:(CGPoint)p
+{
+	CCLOG(@"Add label %0.2f x %02.f",p.x,p.y);
+	//CCNode *parent = [self getChildByTag:kTagParentNode];
+	
+	PhysicsLabel *label = [PhysicsLabel labelWithString:@"A" fontName:@"Marker Felt" fontSize:48];
+    
+    [self addChild:label];
+	
+	label.position = ccp( p.x, p.y);
+	
+	// Define the dynamic body.
+	//Set up a 1m squared box in the physics world
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
+	b2Body *body = world->CreateBody(&bodyDef);
+	
+	// Define another box shape for our dynamic body.
+	//b2PolygonShape dynamicBox;
+	//dynamicBox.SetAsBox(.5f, .5f);//These are mid points for our 1m box
+	b2CircleShape dynamicBox;
+    //dynamicBox.m_p.Set(2.0f, 3.0f);
+    dynamicBox.m_radius = 0.7f;
+    
+	// Define the dynamic body fixture.
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &dynamicBox;
+	fixtureDef.density = 1.0f;
+	fixtureDef.friction = 0.5f;
+    fixtureDef.restitution = 0.2f;
+	body->CreateFixture(&fixtureDef);
+	
+	[label setPhysicsBody:body];
+}
+
+
 -(void) update: (ccTime) dt
 {
 	//It is recommended that a fixed time step is used with Box2D for stability
@@ -230,7 +270,7 @@ enum {
 		
 		location = [[CCDirector sharedDirector] convertToGL: location];
 		
-		[self addNewSpriteAtPosition: location];
+		[self addNewLabelAtPosition: location];
 	}
 }
 

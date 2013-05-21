@@ -181,6 +181,7 @@
 		634444E4174484890040DE14 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 634444E3174484890040DE14 /* GLES-Render.mm */; };
 		634444E7174484890040DE14 /* PhysicsSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 634444E6174484890040DE14 /* PhysicsSprite.mm */; };
 		634444E9174484890040DE14 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 634444E8174484890040DE14 /* blocks.png */; };
+		63C5A65E174B48D600DC359C /* PhysicsLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 63C5A65D174B48D600DC359C /* PhysicsLabel.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -545,6 +546,8 @@
 		634444E5174484890040DE14 /* PhysicsSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
 		634444E6174484890040DE14 /* PhysicsSprite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsSprite.mm; sourceTree = "<group>"; };
 		634444E8174484890040DE14 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		63C5A65C174B48D600DC359C /* PhysicsLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsLabel.h; sourceTree = "<group>"; };
+		63C5A65D174B48D600DC359C /* PhysicsLabel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsLabel.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -611,6 +614,8 @@
 				634444E0174484890040DE14 /* IntroLayer.mm */,
 				634444E2174484890040DE14 /* GLES-Render.h */,
 				634444E3174484890040DE14 /* GLES-Render.mm */,
+				63C5A65C174B48D600DC359C /* PhysicsLabel.h */,
+				63C5A65D174B48D600DC359C /* PhysicsLabel.mm */,
 				634444E5174484890040DE14 /* PhysicsSprite.h */,
 				634444E6174484890040DE14 /* PhysicsSprite.mm */,
 				634442CF174484870040DE14 /* Resources */,
@@ -1367,6 +1372,7 @@
 				634444E1174484890040DE14 /* IntroLayer.mm in Sources */,
 				634444E4174484890040DE14 /* GLES-Render.mm in Sources */,
 				634444E7174484890040DE14 /* PhysicsSprite.mm in Sources */,
+				63C5A65E174B48D600DC359C /* PhysicsLabel.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,6 +1478,7 @@
 				634444EE174484890040DE14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

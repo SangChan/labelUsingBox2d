@@ -20,6 +20,7 @@
 //to define the ratio so that your most common object type is 1x1 metre.
 #define PTM_RATIO 32
 
+
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer
 {
