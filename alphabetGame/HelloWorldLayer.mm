@@ -14,6 +14,7 @@
 
 #import "PhysicsSprite.h"
 #import "PhysicsLabel.h"
+#import "BubbleSprite.h"
 
 enum {
 	kTagParentNode = 1,
@@ -56,6 +57,8 @@ enum {
 		self.isAccelerometerEnabled = YES;
 		CGSize s = [CCDirector sharedDirector].winSize;
 		
+        _bubblesArray = [[NSMutableArray alloc]init];
+        
 		// init physics
 		[self initPhysics];
 		
@@ -75,9 +78,14 @@ enum {
 #endif
 		[self addChild:parent z:0 tag:kTagParentNode];
 		
+        //CCSprite *bg = [CCSprite spriteWithFile:@"bg001.png"];
+        //[self addChild:bg];
+        //bg.position = ccp (s.width/2,s.height/2);
 		
 		//[self addNewSpriteAtPosition:ccp(s.width/2, s.height/2)];
-        [self addNewLabelAtPosition:ccp(s.width/2, s.height/2)];
+        [self addNewLabelAtPosition:ccp(s.width/2-100, s.height/2) Label:@"A"];
+        [self addNewLabelAtPosition:ccp(s.width/2, s.height/2) Label:@"B"];
+        [self addNewLabelAtPosition:ccp(s.width/2+100, s.height/2) Label:@"C"];
 		
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Tap screen" fontName:@"Marker Felt" fontSize:32];
 		[self addChild:label z:0];
@@ -210,41 +218,105 @@ enum {
 	[sprite setPhysicsBody:body];
 }
 
--(void) addNewLabelAtPosition:(CGPoint)p
+-(void) addNewLabelAtPosition:(CGPoint)p Label:(NSString*)label
 {
 	CCLOG(@"Add label %0.2f x %02.f",p.x,p.y);
 	//CCNode *parent = [self getChildByTag:kTagParentNode];
-	
-	PhysicsLabel *label = [PhysicsLabel labelWithString:@"A" fontName:@"Marker Felt" fontSize:48];
     
-    [self addChild:label];
-	
-	label.position = ccp( p.x, p.y);
+    
+	//PhysicsLabel *label = [PhysicsLabel labelWithString:@"A" fontName:@"Marker Felt" fontSize:48];
+    //[self addChild:label];
+	//label.position = ccp( p.x, p.y);
+    
+    BubbleSprite *bubble = [BubbleSprite spriteWithFile:@"bubble.PNG" Label:label];
+    [self addChild:bubble];
+    bubble.position = ccp(p.x,p.y);
 	
 	// Define the dynamic body.
 	//Set up a 1m squared box in the physics world
 	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
+    bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
 	b2Body *body = world->CreateBody(&bodyDef);
+
 	
 	// Define another box shape for our dynamic body.
 	//b2PolygonShape dynamicBox;
 	//dynamicBox.SetAsBox(.5f, .5f);//These are mid points for our 1m box
 	b2CircleShape dynamicBox;
     //dynamicBox.m_p.Set(2.0f, 3.0f);
-    dynamicBox.m_radius = 0.7f;
+    dynamicBox.m_radius = 1.0f;
     
 	// Define the dynamic body fixture.
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &dynamicBox;
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.5f;
-    fixtureDef.restitution = 0.2f;
+    fixtureDef.restitution = 0.5f;
 	body->CreateFixture(&fixtureDef);
-	
-	[label setPhysicsBody:body];
+    
+    [bubble setBody:body];
+    
+    [_bubblesArray addObject:bubble];
 }
+
+-(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch begin");
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:[touch view]];
+    CGPoint convertedLocation = [[CCDirector sharedDirector]convertToGL:location];
+    
+    NSLog(@"touch x = %f , y = %f", convertedLocation.x, convertedLocation.y );
+    
+    for (BubbleSprite *bubble in _bubblesArray) {
+        NSLog(@"bubble x = %f , y = %f", bubble.position.x, bubble.position.y );
+        
+        CGFloat halfWidth = bubble.contentSize.width / 2.0;
+        CGFloat halfHeight = bubble.contentSize.height / 2.0;
+        
+        indexTouchedBubble = -1;
+        if (convertedLocation.x > (bubble.position.x + halfWidth) || convertedLocation.x < (bubble.position.x - halfWidth) ||
+            convertedLocation.y > (bubble.position.y + halfHeight) || convertedLocation.y < (bubble.position.y - halfHeight))  {
+            isBubbleTouched = NO;
+        } else {
+            indexTouchedBubble = [_bubblesArray indexOfObject:bubble];
+            isBubbleTouched = YES;
+            startLocation = ccp(convertedLocation.x,convertedLocation.y);
+            break;
+        }
+    }
+}
+
+-(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (!isBubbleTouched) return ;
+    
+    NSLog(@"touch move");
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:[touch view]];
+    CGPoint convertedLocation = [[CCDirector sharedDirector] convertToGL:location];
+    
+    CGFloat destX = convertedLocation.x - startLocation.x;
+    CGFloat destY = convertedLocation.y - startLocation.y;
+    
+    CGFloat destLength = fabsf(ccpDistance(startLocation, convertedLocation));
+    
+    BubbleSprite *bubble = [_bubblesArray objectAtIndex:indexTouchedBubble];
+    if (destLength > 35 && destLength < 70) {
+        bubble.body->ApplyLinearImpulse(b2Vec2(destX,destY),bubble.body->GetWorldCenter());
+    }
+    else {
+        bubble.body->SetTransform(b2Vec2(convertedLocation.x /PTM_RATIO,convertedLocation.y/PTM_RATIO ),  bubble.body->GetAngle());
+        //b2Vec2 newForce = block.body->GetLinearVelocityFromWorldPoint(b2Vec2(convertedLocation.x ,convertedLocation.y ));
+        //block.body->ApplyForce(newForce,b2Vec2(convertedLocation.x /PTM_RATIO,convertedLocation.y/PTM_RATIO ));
+        
+    }
+    
+    //block.body->ApplyForce(b2Vec2(convertedLocation.x,convertedLocation.y), block.body->GetPosition());
+    
+}
+
+
 
 
 -(void) update: (ccTime) dt
@@ -259,10 +331,13 @@ enum {
 	
 	// Instruct the world to perform a single step of simulation. It is
 	// generally best to keep the time step and iterations fixed.
-	world->Step(dt, velocityIterations, positionIterations);	
+	world->Step(dt, velocityIterations, positionIterations);
+	for (BubbleSprite *bubble in _bubblesArray) {
+        bubble.position = ccp(bubble.body->GetPosition().x * PTM_RATIO, bubble.body->GetPosition().y * PTM_RATIO);
+    }
 }
 
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+/*- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	//Add a new body/atlas sprite at the touched location
 	for( UITouch *touch in touches ) {
@@ -272,6 +347,6 @@ enum {
 		
 		[self addNewLabelAtPosition: location];
 	}
-}
+}*/
 
 @end

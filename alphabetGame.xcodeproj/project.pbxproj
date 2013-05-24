@@ -182,6 +182,11 @@
 		634444E7174484890040DE14 /* PhysicsSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 634444E6174484890040DE14 /* PhysicsSprite.mm */; };
 		634444E9174484890040DE14 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 634444E8174484890040DE14 /* blocks.png */; };
 		63C5A65E174B48D600DC359C /* PhysicsLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 63C5A65D174B48D600DC359C /* PhysicsLabel.mm */; };
+		63E13E03174F437D00055A12 /* BubbleSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 63E13E02174F437D00055A12 /* BubbleSprite.mm */; };
+		63E13E05174F461000055A12 /* bubble-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E13E04174F461000055A12 /* bubble-hd.png */; };
+		63E13E07174F466500055A12 /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E13E06174F466500055A12 /* bubble.png */; };
+		63E13E0A174F483400055A12 /* bg001-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E13E08174F483400055A12 /* bg001-hd.png */; };
+		63E13E0B174F483400055A12 /* bg001.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E13E09174F483400055A12 /* bg001.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -548,6 +553,12 @@
 		634444E8174484890040DE14 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		63C5A65C174B48D600DC359C /* PhysicsLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsLabel.h; sourceTree = "<group>"; };
 		63C5A65D174B48D600DC359C /* PhysicsLabel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsLabel.mm; sourceTree = "<group>"; };
+		63E13E01174F437D00055A12 /* BubbleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleSprite.h; sourceTree = "<group>"; };
+		63E13E02174F437D00055A12 /* BubbleSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BubbleSprite.mm; sourceTree = "<group>"; };
+		63E13E04174F461000055A12 /* bubble-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-hd.png"; sourceTree = "<group>"; };
+		63E13E06174F466500055A12 /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
+		63E13E08174F483400055A12 /* bg001-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg001-hd.png"; sourceTree = "<group>"; };
+		63E13E09174F483400055A12 /* bg001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg001.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -606,6 +617,8 @@
 		634442CE174484870040DE14 /* alphabetGame */ = {
 			isa = PBXGroup;
 			children = (
+				63E13E01174F437D00055A12 /* BubbleSprite.h */,
+				63E13E02174F437D00055A12 /* BubbleSprite.mm */,
 				634444D9174484890040DE14 /* AppDelegate.h */,
 				634444DA174484890040DE14 /* AppDelegate.mm */,
 				634444DC174484890040DE14 /* HelloWorldLayer.h */,
@@ -628,6 +641,10 @@
 		634442CF174484870040DE14 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63E13E08174F483400055A12 /* bg001-hd.png */,
+				63E13E09174F483400055A12 /* bg001.png */,
+				63E13E06174F466500055A12 /* bubble.png */,
+				63E13E04174F461000055A12 /* bubble-hd.png */,
 				634442D0174484870040DE14 /* Default.png */,
 				634442D2174484870040DE14 /* Default-Landscape~ipad.png */,
 				634442D4174484870040DE14 /* fps_images.png */,
@@ -1211,6 +1228,10 @@
 				634442E8174484870040DE14 /* iTunesArtwork in Resources */,
 				63444426174484880040DE14 /* ChangeLog in Resources */,
 				634444E9174484890040DE14 /* blocks.png in Resources */,
+				63E13E05174F461000055A12 /* bubble-hd.png in Resources */,
+				63E13E07174F466500055A12 /* bubble.png in Resources */,
+				63E13E0A174F483400055A12 /* bg001-hd.png in Resources */,
+				63E13E0B174F483400055A12 /* bg001.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,6 +1394,7 @@
 				634444E4174484890040DE14 /* GLES-Render.mm in Sources */,
 				634444E7174484890040DE14 /* PhysicsSprite.mm in Sources */,
 				63C5A65E174B48D600DC359C /* PhysicsLabel.mm in Sources */,
+				63E13E03174F437D00055A12 /* BubbleSprite.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
