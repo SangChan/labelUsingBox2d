@@ -26,8 +26,8 @@ enum {
 @interface HelloWorldLayer()
 -(void) initPhysics;
 -(void) addNewSpriteAtPosition:(CGPoint)p;
--(void) addNewLabelAtPosition:(CGPoint)p;
--(void) createMenu;
+//-(void) addNewLabelAtPosition:(CGPoint)p;
+//-(void) createMenu;
 @end
 
 @implementation HelloWorldLayer
@@ -228,7 +228,7 @@ enum {
     //[self addChild:label];
 	//label.position = ccp( p.x, p.y);
     
-    BubbleSprite *bubble = [BubbleSprite spriteWithFile:@"bubble.PNG" Label:label];
+    BubbleSprite *bubble = [BubbleSprite spriteWithFile:@"bubble.png" Label:label];
     [self addChild:bubble];
     bubble.position = ccp(p.x,p.y);
 	

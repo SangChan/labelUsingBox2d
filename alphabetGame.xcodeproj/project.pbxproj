@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6323C90417A0202400192599 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6323C90317A0202400192599 /* Default-568h@2x.png */; };
 		634442BD174484870040DE14 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634442BC174484870040DE14 /* QuartzCore.framework */; };
 		634442BF174484870040DE14 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634442BE174484870040DE14 /* OpenGLES.framework */; };
 		634442C1174484870040DE14 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634442C0174484870040DE14 /* OpenAL.framework */; };
@@ -190,6 +191,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6323C90317A0202400192599 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		634442B9174484870040DE14 /* alphabetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alphabetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		634442BC174484870040DE14 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		634442BE174484870040DE14 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -584,6 +586,7 @@
 		634442B0174484870040DE14 = {
 			isa = PBXGroup;
 			children = (
+				6323C90317A0202400192599 /* Default-568h@2x.png */,
 				634442CE174484870040DE14 /* alphabetGame */,
 				634442BB174484870040DE14 /* Frameworks */,
 				634442BA174484870040DE14 /* Products */,
@@ -1232,6 +1235,7 @@
 				63E13E07174F466500055A12 /* bubble.png in Resources */,
 				63E13E0A174F483400055A12 /* bg001-hd.png in Resources */,
 				63E13E0B174F483400055A12 /* bg001.png in Resources */,
+				6323C90417A0202400192599 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1445,6 +1449,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: SangChan Lee (585ZYQPML2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SangChan Lee (585ZYQPML2)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1456,6 +1462,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7A93A54B-A9A2-40E5-AF1D-C2A48DD73E64";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A93A54B-A9A2-40E5-AF1D-C2A48DD73E64";
 				USER_HEADER_SEARCH_PATHS = "\"alphabetGame/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1465,6 +1473,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: SangChan Lee (585ZYQPML2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SangChan Lee (585ZYQPML2)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = alphabetGame/Prefix.pch;
@@ -1475,6 +1485,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7A93A54B-A9A2-40E5-AF1D-C2A48DD73E64";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A93A54B-A9A2-40E5-AF1D-C2A48DD73E64";
 				USER_HEADER_SEARCH_PATHS = "\"alphabetGame/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
