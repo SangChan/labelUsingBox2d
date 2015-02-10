@@ -191,7 +191,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6323C90317A0202400192599 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6323C90317A0202400192599 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		634442B9174484870040DE14 /* alphabetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alphabetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		634442BC174484870040DE14 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		634442BE174484870040DE14 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -586,7 +586,6 @@
 		634442B0174484870040DE14 = {
 			isa = PBXGroup;
 			children = (
-				6323C90317A0202400192599 /* Default-568h@2x.png */,
 				634442CE174484870040DE14 /* alphabetGame */,
 				634442BB174484870040DE14 /* Frameworks */,
 				634442BA174484870040DE14 /* Products */,
@@ -650,6 +649,7 @@
 				63E13E04174F461000055A12 /* bubble-hd.png */,
 				634442D0174484870040DE14 /* Default.png */,
 				634442D2174484870040DE14 /* Default-Landscape~ipad.png */,
+				6323C90317A0202400192599 /* Default-568h@2x.png */,
 				634442D4174484870040DE14 /* fps_images.png */,
 				634442D6174484870040DE14 /* fps_images-hd.png */,
 				634442D8174484870040DE14 /* fps_images-ipadhd.png */,
@@ -1194,6 +1194,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					634442B8174484870040DE14 = {
+						DevelopmentTeam = CBUJK8CFZ3;
+					};
+				};
 			};
 			buildConfigurationList = 634442B4174484870040DE14 /* Build configuration list for PBXProject "alphabetGame" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1462,8 +1467,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7A93A54B-A9A2-40E5-AF1D-C2A48DD73E64";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A93A54B-A9A2-40E5-AF1D-C2A48DD73E64";
+				PROVISIONING_PROFILE = "2bde44fe-78d4-47c7-982b-9ca78d92ca9a";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2bde44fe-78d4-47c7-982b-9ca78d92ca9a";
 				USER_HEADER_SEARCH_PATHS = "\"alphabetGame/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1485,8 +1490,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7A93A54B-A9A2-40E5-AF1D-C2A48DD73E64";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A93A54B-A9A2-40E5-AF1D-C2A48DD73E64";
+				PROVISIONING_PROFILE = "2bde44fe-78d4-47c7-982b-9ca78d92ca9a";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2bde44fe-78d4-47c7-982b-9ca78d92ca9a";
 				USER_HEADER_SEARCH_PATHS = "\"alphabetGame/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
